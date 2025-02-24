@@ -19,13 +19,30 @@ function CartContextProvider({ children }) {
 
   useEffect(() => {
     if (user) {
-      let users = JSON.parse(localStorage.getItem("users")) || []
-      let existingUser = users.find((u) => u.id === user.id)
-      setCartItems(existingUser?.cartItems || [])
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      let existingUser = users.find((u) => u.id === user.id);
+      let savedCart = existingUser?.cartItems || [] 
+      // setCartItems(existingUser?.cartItems || []);
+
+      let guestCart = JSON.parse(localStorage.getItem("guestCart")) || []
+      guestCart.forEach((guestItem) => {
+        let existingItem = savedCart.find((item) => item.id === guestItem.id)
+        if(existingItem) {
+          existingItem.quantity += guestItem.quantity
+        } else {
+          savedCart.push(guestItem)
+        }
+      })
+
+      existingUser.cartItems = savedCart
+      localStorage.setItem("users", JSON.stringify(users))
+      localStorage.removeItem("guestCart")
+      setCartItems(savedCart)
     } else {
-      setCartItems([])
+      let guestCart = JSON.parse(localStorage.getItem("guestCart")) || []
+      setCartItems(guestCart);
     }
-  }, [user])
+  }, [user]);
 
   // useEffect(() => {
   //   if (user) {
@@ -40,22 +57,28 @@ function CartContextProvider({ children }) {
       if (existingUser) {
         existingUser.cartItems = cartItems;
         localStorage.setItem("users", JSON.stringify(users))
-      }
+        }
+      } else {
+        localStorage.setItem("guestCart", JSON.stringify(cartItems))
     }
   }, [cartItems, user])
 
   function addItemToCart(item) {
     setCartItems((prevCart) => {
       const itemIndex = prevCart.findIndex((data) => data.id === item.id);
-      let newCart;
+      // let newCart;
       if (itemIndex === -1) {
-        newCart = [...prevCart, { ...item, quantity: 1 }];
+        // newCart = [...prevCart, { ...item, quantity: 1 }];
+        return [...prevCart, { ...item, quantity: 1 }];
       } else {
-        newCart = prevCart.map((data, index) =>
-          index === itemIndex ? { ...data, quantity: data.quantity + 1 } : data
-        );
+        // newCart = prevCart.map((data, index) =>
+        //   index === itemIndex ? { ...data, quantity: data.quantity + 1 } : data
+        // );
+        return prevCart.map((data, index) =>
+            index === itemIndex ? { ...data, quantity: data.quantity + 1 } : data
+          );
       }
-      return newCart;
+      // return newCart;
     });
   }
 
@@ -132,6 +155,16 @@ function CartContextProvider({ children }) {
         toast.error("Your cart is empty!")
     }
   }
+
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     if (!user) {
+  //       localStorage.removeItem("guestCart");
+  //     }
+  //   };
+  //   window.addEventListener("beforeunload", handleBeforeUnload);
+  //   return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  // }, [user]);
 
   return (
     <CartContext.Provider

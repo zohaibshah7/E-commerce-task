@@ -23,9 +23,9 @@ export default function Header() {
             {user ? (
               <>
                 <button
-                onClick={() => {
-                    navigate("/user-profile")
-                }}
+                // onClick={() => {
+                //     navigate("/user-profile")
+                // }}
                 className="text-gray-500 hover:text-orange-400 mr-2 text-xl font-medium cursor-pointer transition">
                   {user.name} <UserOutlined />
                 </button>

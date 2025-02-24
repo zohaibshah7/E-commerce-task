@@ -65,6 +65,7 @@ function AuthProvider({ children }) {
       localStorage.removeItem("loggedInUser");
       localStorage.removeItem(`cartItems_${user.id}`);
       setUser(null);
+      toast.info("Logout Successfully")
     }
   }
 

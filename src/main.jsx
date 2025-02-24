@@ -20,6 +20,7 @@ import CartContextProvider from "./context/CartContext.jsx";
 import AuthProvider from "./context/AuthContext.jsx";
 import OrderDetails from "./pages/OrderDetails.jsx";
 import { ToastContainer } from "react-toastify";
+import ProtectedRoute from "./components/ProtectedRoutes.jsx";
 // import UserProfile from "./pages/UserProfile.jsx";
 
 const router = createBrowserRouter(
@@ -30,8 +31,8 @@ const router = createBrowserRouter(
       {/* <Route path="user-profile" element={<UserProfile />} />, */}
       <Route path="products" element={<Products />} />,
       <Route path="products/:id" element={<ProductDetail />} />,
-      <Route path="cart" element={<Cart />} />,
-      <Route path="order-details" element={<OrderDetails />} />
+      <Route path="cart" element={<ProtectedRoute component={Cart} />} />,
+      <Route path="order-details" element={<ProtectedRoute component={OrderDetails} />} />
       <Route path="signup" element={<Signup />} />,
       <Route path="login" element={<Login />} />,
       <Route path="about" element={<About />} />,

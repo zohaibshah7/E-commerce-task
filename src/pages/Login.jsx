@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { user, login } = useContext(AuthContext);
@@ -27,7 +28,8 @@ const Login = () => {
     event.preventDefault();
 
     if (email === "" || password === "") {
-      alert("Please Enter Details!");
+      // alert("Please Enter Details!");
+      toast.error("Please Enter Details!");
     } else {
       login(email, password);
       navigate("/");
