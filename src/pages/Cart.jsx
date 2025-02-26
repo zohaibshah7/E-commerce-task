@@ -65,6 +65,7 @@ function Cart() {
             <div className="flex gap-3 items-center">
               <Button
                 onClick={() => addItemToCart(data)}
+                disabled={data.quantity === 5}
                 icon={<PlusOutlined />}
               ></Button>
 
