@@ -1,8 +1,8 @@
 import axios from "axios";
-import{ useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import CategoryChip from "../components/CategoryChip";
-import loader from "../assets/loader.gif"
+import loader from "../assets/loader.gif";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -14,7 +14,10 @@ function Products() {
 
   useEffect(() => {
     // console.log("Use Effect call hu gya");
-    const url = chosenCategory === "All" ? "https://dummyjson.com/products" : `https://dummyjson.com/products/category/${chosenCategory}`;
+    const url =
+      chosenCategory === "All"
+        ? "https://dummyjson.com/products"
+        : `https://dummyjson.com/products/category/${chosenCategory}`;
     axios
       .get(url)
       .then((res) => {
@@ -45,24 +48,26 @@ function Products() {
     <div className="container mx-auto">
       {loading ? (
         <div className="flex justify-center mt-96 items-center">
-          <img src={loader} alt="GIF"/>
+          <img src={loader} alt="GIF" />
         </div>
       ) : (
         <div>
           <div className="flex flex-wrap gap-3 m-4">
             <CategoryChip
-            onClick={() => setChosenCategory("All")}
-            isChosen={chosenCategory === "All"}
-            category={{
-              slug: "All",
-              name: "All",
-            }} /> 
+              onClick={() => setChosenCategory("All")}
+              isChosen={chosenCategory === "All"}
+              category={{
+                slug: "All",
+                name: "All",
+              }}
+            />
             {categories.map((category) => (
               <CategoryChip
-              onClick={() => setChosenCategory(category.slug)}
-              isChosen={category.slug === chosenCategory}
-              category={category}
-              key={category.slug} />
+                onClick={() => setChosenCategory(category.slug)}
+                isChosen={category.slug === chosenCategory}
+                category={category}
+                key={category.slug}
+              />
             ))}
           </div>
           <div className="flex flex-wrap m-4 gap-10 justify-center">

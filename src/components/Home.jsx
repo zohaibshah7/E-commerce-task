@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="w-full min-h-[calc(100vh-4.5rem)] flex flex-col overflow-x-hidden">

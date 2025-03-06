@@ -17,7 +17,7 @@ function AuthProvider({ children }) {
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
     if (users.some((u) => u.email === newUser.email)) {
-      toast.info("Email already exists!")
+      toast.info("Email already exists!");
       // alert("Email already exists!");
       return;
     }
@@ -28,34 +28,34 @@ function AuthProvider({ children }) {
 
     localStorage.setItem("loggedInUser", JSON.stringify(newUser));
     setUser(newUser);
-    toast.success("Account Successfully Registered!")
+    toast.success("Account Successfully Registered!");
     // alert("Account Successfully Registered!");
   }
 
   function login(email, password) {
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    
+
     const existingUser = users.find(
       (u) => u.email === email && u.password === password
     );
-    
+
     // if(users.length === 0) {
     //   toast.error("User not found! Please Signup first")
     //   return;
     // }
 
     if (!existingUser) {
-      toast.info("User not found! Please Signup first")
+      toast.info("User not found! Please Signup first");
       return;
     }
-    
+
     if (existingUser) {
       localStorage.setItem("loggedInUser", JSON.stringify(existingUser));
       setUser(existingUser);
-      toast.success(`Login Successfully! Welcome, ${existingUser.name}`)
+      toast.success(`Login Successfully! Welcome, ${existingUser.name}`);
       // alert(`Login Successfully! Welcome, ${existingUser.name}`);
     } else {
-      toast.alert("Invalid Email or Password!")
+      toast.alert("Invalid Email or Password!");
       // alert("Invalid Email or Password!");
     }
   }
@@ -65,7 +65,7 @@ function AuthProvider({ children }) {
       localStorage.removeItem("loggedInUser");
       localStorage.removeItem(`cartItems_${user.id}`);
       setUser(null);
-      toast.info("Logout Successfully")
+      toast.info("Logout Successfully");
     }
   }
 

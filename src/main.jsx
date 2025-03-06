@@ -26,13 +26,15 @@ import ProtectedRoute from "./components/ProtectedRoutes.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      ,
       <Route index element={<Home />} />,
       {/* <Route path="user-profile" element={<UserProfile />} />, */}
       <Route path="products" element={<Products />} />,
       <Route path="products/:id" element={<ProductDetail />} />,
       <Route path="cart" element={<ProtectedRoute component={Cart} />} />,
-      <Route path="order-details" element={<ProtectedRoute component={OrderDetails} />} />
+      <Route
+        path="order-details"
+        element={<ProtectedRoute component={OrderDetails} />}
+      />
       <Route path="signup" element={<Signup />} />,
       <Route path="login" element={<Login />} />,
       <Route path="about" element={<About />} />,
@@ -42,10 +44,10 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")).render(
-    <AuthProvider>
-      <CartContextProvider>
-        <RouterProvider router={router} />
-      </CartContextProvider>
-      <ToastContainer />
-    </AuthProvider>
+  <AuthProvider>
+    <CartContextProvider>
+      <RouterProvider router={router} />
+    </CartContextProvider>
+    <ToastContainer />
+  </AuthProvider>
 );

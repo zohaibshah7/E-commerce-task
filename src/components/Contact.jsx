@@ -38,7 +38,7 @@ function Contact() {
                   />
                 </svg>
                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                    Mansehra Colony Landhi Karachi #22
+                  Mansehra Colony Landhi Karachi #22
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ function Contact() {
                   />
                 </svg>
                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                    zohaibshah@gmail.com
+                  zohaibshah@gmail.com
                 </div>
               </div>
             </div>

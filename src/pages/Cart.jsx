@@ -15,7 +15,13 @@ function Cart() {
   //   }
   // }, [user, navigate]);
 
-  const { cartItems, removeItemFromCart, addItemToCart, removeQuantityFromCart, checkout } = useContext(CartContext);
+  const {
+    cartItems,
+    removeItemFromCart,
+    addItemToCart,
+    removeQuantityFromCart,
+    checkout,
+  } = useContext(CartContext);
 
   const totalAmount = cartItems.reduce(
     (total, obj) => total + obj.quantity * obj.price,
@@ -28,7 +34,9 @@ function Cart() {
 
   return (
     <div className="container mx-auto my-5">
-      <h1 className="font-medium text-center text-3xl text-gray-700">Cart Items</h1>
+      <h1 className="font-medium text-center text-3xl text-gray-700">
+        Cart Items
+      </h1>
 
       <div className="flex gap-5 my-5">
         <div className="flex-grow flex flex-col border p-4 justify-center items-center">

@@ -16,10 +16,10 @@ const Signup = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(user) {
-      navigate("/")
+    if (user) {
+      navigate("/");
     }
-  }, [user, navigate])
+  }, [user, navigate]);
 
   const handleInput = (event) => {
     const name = event.target.name;
@@ -32,7 +32,7 @@ const Signup = () => {
 
     if (data.name === "" || data.email === "" || data.password === "") {
       // alert("Please Enter Detail!");
-      toast.info("Please Enter Details!")
+      toast.info("Please Enter Details!");
     } else {
       signup(data);
       navigate("/login");

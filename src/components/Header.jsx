@@ -23,15 +23,16 @@ export default function Header() {
             {user ? (
               <>
                 <button
-                // onClick={() => {
-                //     navigate("/user-profile")
-                // }}
-                className="text-gray-500 hover:text-orange-400 mr-2 text-xl font-medium cursor-pointer transition">
+                  // onClick={() => {
+                  //     navigate("/user-profile")
+                  // }}
+                  className="text-gray-500 hover:text-orange-400 mr-2 text-xl font-medium cursor-pointer transition"
+                >
                   {user.name} <UserOutlined />
                 </button>
                 <Link
-                to="/order-details"
-                className="py-2 px-4 border text-gray-600 hover:text-gray-400 font-medium mr-2 cursor-pointer rounded-lg text-sm transition"
+                  to="/order-details"
+                  className="py-2 px-4 border text-gray-600 hover:text-gray-400 font-medium mr-2 cursor-pointer rounded-lg text-sm transition"
                 >
                   Orders
                 </Link>
@@ -53,11 +54,9 @@ export default function Header() {
                 Register
               </Link>
             )}
-            <Link
-              to="/cart"
-            >
+            <Link to="/cart">
               <Badge count={cartItems.length}>
-                <ShoppingCartOutlined className="text-3xl"/>
+                <ShoppingCartOutlined className="text-3xl" />
               </Badge>
             </Link>
           </div>
