@@ -53,7 +53,7 @@ function Cart() {
         </div>
         <button
           onClick={checkout}
-          className="flex-grow flex flex-col border p-4 justify-center items-center cursor-pointer font-medium text-gray-700 hover:text-gray-400 text-2xl transition"
+          className="flex-grow flex flex-col border p-4 justify-center items-center cursor-pointer font-medium text-gray-700 hover:text-orange-400 text-2xl transition"
         >
           Checkout
         </button>
